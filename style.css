@@ -672,6 +672,7 @@ a:active {
 .main-navigation a {
 	display: block;
 	text-decoration: none;
+	margin-right: 20px;
 }
 
 /* Small menu. */
@@ -947,4 +948,32 @@ object {
 
 .gallery-caption {
 	display: block;
+}
+
+
+/* ---custom classes-- */
+.container {
+	padding: 50px;
+}
+
+.circle {
+	border-radius: 10px;
+	border: 1px solid black;
+}
+
+.separator {
+	border: .5px solid lightgrey;
+}
+
+.page-numbers {
+	background-color: #21759b;
+}
+
+.frontBox {
+	display: flex;
+
+}
+
+.half {
+	width: 50%;
 }
