@@ -1,11 +1,11 @@
 <?php
 
 /**
- * bnbWebSite functions and definitions
+ * tema_test_corso functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package bnbWebSite
+ * @package tema_test_corso
  */
 
 if (!defined('_S_VERSION')) {
@@ -13,7 +13,7 @@ if (!defined('_S_VERSION')) {
 	define('_S_VERSION', '1.0.0');
 }
 
-if (!function_exists('bnbwebsite_setup')) :
+if (!function_exists('tema_test_corso_setup')) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -21,15 +21,15 @@ if (!function_exists('bnbwebsite_setup')) :
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function bnbwebsite_setup()
+	function tema_test_corso_setup()
 	{
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on bnbWebSite, use a find and replace
-		 * to change 'bnbwebsite' to the name of your theme in all the template files.
+		 * If you're building a theme based on tema_test_corso, use a find and replace
+		 * to change 'tema_test_corso' to the name of your theme in all the template files.
 		 */
-		load_theme_textdomain('bnbwebsite', get_template_directory() . '/languages');
+		load_theme_textdomain('tema_test_corso', get_template_directory() . '/languages');
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support('automatic-feed-links');
@@ -63,7 +63,7 @@ if (!function_exists('bnbwebsite_setup')) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__('Primary', 'bnbwebsite'),
+				'menu-1' => esc_html__('Primary', 'tema_test_corso'),
 			)
 		);
 
@@ -88,7 +88,7 @@ if (!function_exists('bnbwebsite_setup')) :
 		add_theme_support(
 			'custom-background',
 			apply_filters(
-				'bnbwebsite_custom_background_args',
+				'tema_test_corso_custom_background_args',
 				array(
 					'default-color' => 'ffffff',
 					'default-image' => '',
@@ -115,7 +115,7 @@ if (!function_exists('bnbwebsite_setup')) :
 		);
 	}
 endif;
-add_action('after_setup_theme', 'bnbwebsite_setup');
+add_action('after_setup_theme', 'tema_test_corso_setup');
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -124,27 +124,27 @@ add_action('after_setup_theme', 'bnbwebsite_setup');
  *
  * @global int $content_width
  */
-function bnbwebsite_content_width()
+function tema_test_corso_content_width()
 {
 	// This variable is intended to be overruled from themes.
 	// Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
 	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-	$GLOBALS['content_width'] = apply_filters('bnbwebsite_content_width', 640);
+	$GLOBALS['content_width'] = apply_filters('tema_test_corso_content_width', 640);
 }
-add_action('after_setup_theme', 'bnbwebsite_content_width', 0);
+add_action('after_setup_theme', 'tema_test_corso_content_width', 0);
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function bnbwebsite_widgets_init()
+function tema_test_corso_widgets_init()
 {
 	register_sidebar(
 		array(
-			'name'          => esc_html__('Sidebar', 'bnbwebsite'),
+			'name'          => esc_html__('Sidebar', 'tema_test_corso'),
 			'id'            => 'sidebar-1',
-			'description'   => esc_html__('Add widgets here.', 'bnbwebsite'),
+			'description'   => esc_html__('Add widgets here.', 'tema_test_corso'),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -153,9 +153,9 @@ function bnbwebsite_widgets_init()
 	);
 	register_sidebar(
 		array(
-			'name'          => esc_html__('Sidebar test', 'bnbwebsite'),
+			'name'          => esc_html__('Sidebar test', 'tema_test_corso'),
 			'id'            => 'sidebar-2',
-			'description'   => esc_html__('Add widgets here.', 'bnbwebsite'),
+			'description'   => esc_html__('Add widgets here.', 'tema_test_corso'),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -163,25 +163,25 @@ function bnbwebsite_widgets_init()
 		)
 	);
 }
-add_action('widgets_init', 'bnbwebsite_widgets_init');
+add_action('widgets_init', 'tema_test_corso_widgets_init');
 
 /**
  * Enqueue scripts and styles.
  */
-function bnbwebsite_scripts()
+function tema_test_corso_scripts()
 {
-	wp_enqueue_style('bnbwebsite-style', get_stylesheet_uri(), array(), microtime());
-	wp_style_add_data('bnbwebsite-style', 'rtl', 'replace');
+	wp_enqueue_style('tema_test_corso-style', get_stylesheet_uri(), array(), microtime());
+	wp_style_add_data('tema_test_corso-style', 'rtl', 'replace');
 
-	wp_enqueue_script('bnbwebsite-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
+	wp_enqueue_script('tema_test_corso-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
 
-	wp_enqueue_script('bnbwebsite-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), _S_VERSION, true);
+	wp_enqueue_script('tema_test_corso-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), _S_VERSION, true);
 
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
 	}
 }
-add_action('wp_enqueue_scripts', 'bnbwebsite_scripts');
+add_action('wp_enqueue_scripts', 'tema_test_corso_scripts');
 
 /**
  * Implement the Custom Header feature.

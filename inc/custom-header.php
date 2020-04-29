@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Sample implementation of the Custom Header feature
  *
@@ -8,71 +9,73 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package bnbWebSite
+ * @package tema_test_corso
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses bnbwebsite_header_style()
+ * @uses tema_test_corso_header_style()
  */
-function bnbwebsite_custom_header_setup() {
+function tema_test_corso_custom_header_setup()
+{
 	add_theme_support(
 		'custom-header',
 		apply_filters(
-			'bnbwebsite_custom_header_args',
+			'tema_test_corso_custom_header_args',
 			array(
 				'default-image'      => '',
 				'default-text-color' => '000000',
 				'width'              => 1000,
 				'height'             => 250,
 				'flex-height'        => true,
-				'wp-head-callback'   => 'bnbwebsite_header_style',
+				'wp-head-callback'   => 'tema_test_corso_header_style',
 			)
 		)
 	);
 }
-add_action( 'after_setup_theme', 'bnbwebsite_custom_header_setup' );
+add_action('after_setup_theme', 'tema_test_corso_custom_header_setup');
 
-if ( ! function_exists( 'bnbwebsite_header_style' ) ) :
+if (!function_exists('tema_test_corso_header_style')) :
 	/**
 	 * Styles the header image and text displayed on the blog.
 	 *
-	 * @see bnbwebsite_custom_header_setup().
+	 * @see tema_test_corso_custom_header_setup().
 	 */
-	function bnbwebsite_header_style() {
+	function tema_test_corso_header_style()
+	{
 		$header_text_color = get_header_textcolor();
 
 		/*
 		 * If no custom options for text are set, let's bail.
 		 * get_header_textcolor() options: Any hex value, 'blank' to hide text. Default: add_theme_support( 'custom-header' ).
 		 */
-		if ( get_theme_support( 'custom-header', 'default-text-color' ) === $header_text_color ) {
+		if (get_theme_support('custom-header', 'default-text-color') === $header_text_color) {
 			return;
 		}
 
 		// If we get this far, we have custom styles. Let's do this.
-		?>
+?>
 		<style type="text/css">
-		<?php
-		// Has the text been hidden?
-		if ( ! display_header_text() ) :
-			?>
-			.site-title,
+			<?php
+			// Has the text been hidden?
+			if (!display_header_text()) :
+			?>.site-title,
 			.site-description {
 				position: absolute;
 				clip: rect(1px, 1px, 1px, 1px);
-				}
+			}
+
 			<?php
 			// If the user has set a custom color for the text use that.
-		else :
-			?>
-			.site-title a,
+			else :
+			?>.site-title a,
 			.site-description {
-				color: #<?php echo esc_attr( $header_text_color ); ?>;
+				color: #<?php echo esc_attr($header_text_color); ?>;
 			}
-		<?php endif; ?>
+
+			<?php endif; ?>
 		</style>
-		<?php
+<?php
 	}
 endif;

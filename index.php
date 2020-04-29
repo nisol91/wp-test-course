@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The main template file
  *
@@ -9,7 +10,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package bnbWebSite
+ * @package tema_test_corso
  */
 
 get_header();
@@ -17,42 +18,42 @@ get_header('test');
 
 ?>
 
-	<main id="primary" class="site-main">
+<main id="primary" class="site-main">
 
-		<?php
-		if ( have_posts() ) :
+	<?php
+	if (have_posts()) :
 
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
+		if (is_home() && !is_front_page()) :
+	?>
+			<header>
+				<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+			</header>
+	<?php
+		endif;
 
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+		/* Start the Loop */
+		while (have_posts()) :
+			the_post();
 
-				/*
+			/*
 				 * Include the Post-Type-specific template for the content.
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
 				 */
-				get_template_part( 'template-parts/content', 'blog' );
+			get_template_part('template-parts/content', 'blog');
 
-			endwhile;
+		endwhile;
 
-			the_posts_navigation();
+		the_posts_navigation();
 
-		else :
+	else :
 
-			get_template_part( 'template-parts/content', 'none' );
+		get_template_part('template-parts/content', 'none');
 
-		endif;
-		?>
+	endif;
+	?>
 
-	</main><!-- #main -->
+</main><!-- #main -->
 
 <?php
 get_sidebar();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying the footer
  *
@@ -6,29 +7,30 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package bnbWebSite
+ * @package tema_test_corso
  */
 
 ?>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'bnbwebsite' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'bnbwebsite' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'bnbwebsite' ), 'bnbwebsite', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
+<footer id="colophon" class="site-footer">
+	<div class="site-info">
+		<a href="<?php echo esc_url(__('https://wordpress.org/', 'tema_test_corso')); ?>">
+			<?php
+			/* translators: %s: CMS name, i.e. WordPress. */
+			printf(esc_html__('Proudly powered by %s', 'tema_test_corso'), 'WordPress');
+			?>
+		</a>
+		<span class="sep"> | </span>
+		<?php
+		/* translators: 1: Theme name, 2: Theme author. */
+		printf(esc_html__('Theme: %1$s by %2$s.', 'tema_test_corso'), 'tema_test_corso', '<a href="http://underscores.me/">Underscores.me</a>');
+		?>
+	</div><!-- .site-info -->
+</footer><!-- #colophon -->
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
 
 </body>
+
 </html>

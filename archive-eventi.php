@@ -5,7 +5,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package bnbWebSite
+ * @package tema_test_corso
  */
 
 get_header();
