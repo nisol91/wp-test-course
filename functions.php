@@ -48,8 +48,8 @@ if (!function_exists('bnbwebsite_setup')) :
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support('post-thumbnails');
-		// add_image_size( 'blog-image', 100, 200, true );
-		add_image_size('blog-image', 100, 50, ['left', 'top']);
+		add_image_size('blog-image-hard', 200, 200, true);
+		// add_image_size('blog-image-positioned', 100, 50, ['left', 'top']);
 
 		function my_custom_sizes($sizes)
 		{
@@ -308,3 +308,88 @@ function runners()
 	register_post_type('runners', $args);
 }
 add_action('init', 'runners', 0);
+
+
+/**
+ *
+ * custom taxonomies
+ *
+ */
+
+// Register Custom Taxonomy EVENT TYPE
+function trail_events_type()
+{
+
+	$labels = array(
+		'name'                       => _x('types', 'Taxonomy General Name', 'trail'),
+		'singular_name'              => _x('type', 'Taxonomy Singular Name', 'trail'),
+		'menu_name'                  => __('Events Types', 'trail'),
+		'all_items'                  => __('All types', 'trail'),
+		'parent_item'                => __('Parent Item', 'trail'),
+		'parent_item_colon'          => __('Parent Item:', 'trail'),
+		'new_item_name'              => __('New Event Type Name', 'trail'),
+		'add_new_item'               => __('Add New Event Type', 'trail'),
+		'edit_item'                  => __('Edit Item', 'trail'),
+		'update_item'                => __('Update Item', 'trail'),
+		'view_item'                  => __('View Item', 'trail'),
+		'separate_items_with_commas' => __('Separate items with commas', 'trail'),
+		'add_or_remove_items'        => __('Add or remove items', 'trail'),
+		'choose_from_most_used'      => __('Choose from the most used', 'trail'),
+		'popular_items'              => __('Popular Items', 'trail'),
+		'search_items'               => __('Search Items', 'trail'),
+		'not_found'                  => __('Not Found', 'trail'),
+		'no_terms'                   => __('No items', 'trail'),
+		'items_list'                 => __('Items list', 'trail'),
+		'items_list_navigation'      => __('Items list navigation', 'trail'),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => false,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+	);
+	register_taxonomy('type', array('eventi'), $args);
+}
+add_action('init', 'trail_events_type', 0);
+
+// Register Custom Taxonomy REVIEWS
+function trail_events_review()
+{
+
+	$labels = array(
+		'name'                       => _x('reviews', 'Taxonomy General Name', 'trail'),
+		'singular_name'              => _x('review', 'Taxonomy Singular Name', 'trail'),
+		'menu_name'                  => __('Events Review', 'trail'),
+		'all_items'                  => __('All reviews', 'trail'),
+		'parent_item'                => __('Parent Item', 'trail'),
+		'parent_item_colon'          => __('Parent Item:', 'trail'),
+		'new_item_name'              => __('New Review Name', 'trail'),
+		'add_new_item'               => __('Add New Review', 'trail'),
+		'edit_item'                  => __('Edit Item', 'trail'),
+		'update_item'                => __('Update Item', 'trail'),
+		'view_item'                  => __('View Item', 'trail'),
+		'separate_items_with_commas' => __('Separate items with commas', 'trail'),
+		'add_or_remove_items'        => __('Add or remove items', 'trail'),
+		'choose_from_most_used'      => __('Choose from the most used', 'trail'),
+		'popular_items'              => __('Popular Items', 'trail'),
+		'search_items'               => __('Search Items', 'trail'),
+		'not_found'                  => __('Not Found', 'trail'),
+		'no_terms'                   => __('No items', 'trail'),
+		'items_list'                 => __('Items list', 'trail'),
+		'items_list_navigation'      => __('Items list navigation', 'trail'),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => true,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+	);
+	register_taxonomy('review', array('eventi'), $args);
+}
+add_action('init', 'trail_events_review', 0);
