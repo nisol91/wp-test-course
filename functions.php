@@ -393,3 +393,5 @@ function trail_events_review()
 	register_taxonomy('review', array('eventi'), $args);
 }
 add_action('init', 'trail_events_review', 0);
+
+require_once(__DIR__ . '/shortcodes/shortcode.php');

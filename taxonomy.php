@@ -10,7 +10,7 @@
 
 get_header();
 ?>
-<h1>archivio eventi</h1>
+<h1>tassonomia generica</h1>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style lang="css">
 	.checked {

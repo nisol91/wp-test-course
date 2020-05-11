@@ -1,7 +1,5 @@
 <?php
 
-use function PHPSTORM_META\map;
-
 $templateDirectory = get_template_directory_uri(); ?>
 <link rel="stylesheet" href="<?php echo $templateDirectory ?>/css/atleti.css">
 <?php get_header(); ?>
