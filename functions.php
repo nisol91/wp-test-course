@@ -173,6 +173,7 @@ function tema_test_corso_scripts()
 	wp_enqueue_style('tema_test_corso-style', get_stylesheet_uri(), array(), microtime());
 	wp_style_add_data('tema_test_corso-style', 'rtl', 'replace');
 
+
 	wp_enqueue_script('tema_test_corso-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
 
 	wp_enqueue_script('tema_test_corso-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), _S_VERSION, true);
@@ -180,6 +181,15 @@ function tema_test_corso_scripts()
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
 	}
+
+
+	// jquery cdn
+	wp_enqueue_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js', array(), null, true);
+	//personal js scripts
+
+	// ajax scripts
+	wp_enqueue_script('ajax-script', get_template_directory_uri() . '/js/ajax.js', array(), _S_VERSION, true);
+	wp_localize_script('ajax-script', 'my_ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
 }
 add_action('wp_enqueue_scripts', 'tema_test_corso_scripts');
 
@@ -390,8 +400,44 @@ function trail_events_review()
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
 	);
+
 	register_taxonomy('review', array('eventi'), $args);
 }
 add_action('init', 'trail_events_review', 0);
 
 require_once(__DIR__ . '/shortcodes/shortcode.php');
+
+
+function form_simple()
+{ ?>
+
+	<h1>simple form!!</h1>
+<?php
+
+}
+
+add_action('show_user_profile', 'form_simple');
+
+function save_form()
+{
+	// update_user_meta();
+}
+
+
+add_action('personal_options_update', 'save_form');
+
+
+// chiamata ajax
+
+function insert_data()
+{
+
+
+
+	echo '<pre>';
+	var_dump($_POST);
+	echo '</pre>';
+}
+
+add_action('wp_ajax_insert_data', 'insert_data');
+add_action('wp_ajax_nopriv_insert_data', 'insert_data');
