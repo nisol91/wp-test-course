@@ -427,7 +427,8 @@ function save_form()
 add_action('personal_options_update', 'save_form');
 
 
-// chiamata ajax
+// chiamata ajax form inserimento dati
+require_once(__DIR__ . '/shortcodes/shortcode.php');
 
 function insert_data()
 {
