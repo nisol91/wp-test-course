@@ -428,17 +428,53 @@ add_action('personal_options_update', 'save_form');
 
 
 // chiamata ajax form inserimento dati
-require_once(__DIR__ . '/shortcodes/shortcode.php');
+require_once(__DIR__ . '/inc/database.php');
+require_once(__DIR__ . '/query_db_functions.php');
+
 
 function insert_data()
 {
-
-
-
-	echo '<pre>';
-	var_dump($_POST);
-	echo '</pre>';
+	// echo '<pre>';
+	// var_dump($_POST['insert_data']);
+	// echo '</pre>';
+	$dati_inserimento = array(
+		'name' => $_POST['input_vals']['name'],
+		'lastname' => $_POST['input_vals']['lastname'],
+		'email' => $_POST['input_vals']['email'],
+	);
+	$data_format = array('%s', '%s', '%s');
+	insert_data_db($dati_inserimento, $data_format);
 }
 
 add_action('wp_ajax_insert_data', 'insert_data');
 add_action('wp_ajax_nopriv_insert_data', 'insert_data');
+
+
+function delete_data()
+{
+	$row_id = (int) $_POST['id_row'];
+	echo '<pre>';
+	var_dump($row_id);
+	echo '</pre>';
+}
+
+add_action('wp_ajax_delete_data', 'delete_data');
+add_action('wp_ajax_nopriv_delete_data', 'delete_data');
+
+
+function insert_data_db($dati, $formato)
+{
+
+	global $wpdb;
+	$table = $wpdb->prefix . 'form_data';
+	$result = $wpdb->insert($table, $dati, $formato);
+
+	if ($result) {
+		wp_send_json_success($result);
+	} else {
+		$result = array(
+			'message' => 'error'
+		);
+		wp_send_json_error($result);
+	}
+}

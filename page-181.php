@@ -35,6 +35,43 @@ get_header();
 		<button type="submit" id="invia_dati" class="btn btn-primary">Submit</button>
 	</form>
 
+
+
+	<table class="table" id="my_table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">First</th>
+				<th scope="col">Last</th>
+				<th scope="col">Handle</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php $data_array = getDataFromDb(); ?>
+			<?php if (!empty($data_array)) {
+				foreach ($data_array as $value) {
+			?>
+					<tr>
+						<th scope="row"><?php echo $value->id ?></th>
+						<td><?php echo $value->name ?></td>
+						<td><?php echo $value->lastname ?></td>
+						<td><?php echo $value->email ?></td>
+						<td class="delete_row" row-id="<?php echo $value->id ?>">elimina</td>
+
+					</tr>
+				<?php
+
+				}
+				?>
+
+			<?php
+
+			} ?>
+
+
+		</tbody>
+	</table>
+
 </main><!-- #main -->
 
 <?php
